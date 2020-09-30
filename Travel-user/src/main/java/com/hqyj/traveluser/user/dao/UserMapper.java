@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 @Repository
-public interface UserMapper{
+public interface UserMapper {
 
     @Select("select * from user where user_name = #{userName}")
     User getUserByUserName(String userName);

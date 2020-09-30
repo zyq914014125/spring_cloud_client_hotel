@@ -40,24 +40,24 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public Result<Team> updateTeam(Team team) {
         teamDao.updateTeam(team);
-        return new Result<Team>(Result.ResultState.SUCCESS_RESPONSE,"update success");
+        return new Result<Team>(Result.ResultState.SUCCESS_RESPONSE, "update success");
     }
 
     @Override
     public Result<Team> insertTeam(Team team) {
         teamDao.insertTeam(team);
-        return new Result<Team>(Result.ResultState.SUCCESS_RESPONSE,"insert success");
+        return new Result<Team>(Result.ResultState.SUCCESS_RESPONSE, "insert success");
     }
 
     @Override
     public Result<UserTeam> insertTeamUser(UserTeam userTeam) {
 
         List<Object> objects = userTeamDao.selectTeamIdAndUserId(userTeam);
-        if (objects.isEmpty()){
+        if (objects.isEmpty()) {
             userTeamDao.insertTeamUser(userTeam);
-            return new Result<UserTeam>(Result.ResultState.SUCCESS_RESPONSE,"insert success");
-        }else {
-            return new Result<>(Result.ResultState.ERROR_RESPONSE,"请勿重复报团");
+            return new Result<UserTeam>(Result.ResultState.SUCCESS_RESPONSE, "insert success");
+        } else {
+            return new Result<UserTeam>(Result.ResultState.ERROR_RESPONSE, "请勿重复报团");
         }
     }
 
@@ -65,6 +65,6 @@ public class TeamServiceImpl implements TeamService {
     @Transactional
     public Result<Team> delTeam(int teamId) {
         teamDao.delTeam(teamId);
-        return new Result<Team>(Result.ResultState.SUCCESS_RESPONSE,"delete success");
+        return new Result<Team>(Result.ResultState.SUCCESS_RESPONSE, "delete success");
     }
 }

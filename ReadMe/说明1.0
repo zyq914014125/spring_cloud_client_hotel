@@ -1,0 +1,12 @@
+1.0版说明：
+        1.启动前先把car.sql导进mysql数据库
+        2.主页有些是静态，支付功能正在完善
+        3.登录后，个人中心还在赶制
+        4.启动时先启动注册机
+模块说明：
+        Travel-admin   html板块
+        Travel-car     车辆接口（暂未使用）
+        Travel-hotel   旅馆接口
+        Travel-scenery  景区，路线接口
+        Travel-user    用户接口
+        Travel-register 注册机

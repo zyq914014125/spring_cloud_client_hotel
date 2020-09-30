@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 @Entity
-@Table(name="route")
+@Table(name = "route")
 public class Route implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +23,35 @@ public class Route implements Serializable {
 //    private List<Integer> seceneryId;
 
 
+    public int getRouteId() {
+        return routeId;
+    }
 
+    public void setRouteId(int routeId) {
+        this.routeId = routeId;
+    }
+
+    public String getSceneryIdList() {
+        return sceneryIdList;
+    }
+
+    public void setSceneryIdList(String sceneryIdList) {
+        this.sceneryIdList = sceneryIdList;
+    }
+
+    public String getRouteName() {
+        return routeName;
+    }
+
+    public void setRouteName(String routeName) {
+        this.routeName = routeName;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 }

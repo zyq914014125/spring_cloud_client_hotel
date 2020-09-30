@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 @Data
 @Entity
-@Table(name="car")
+@Table(name = "car")
 public class Car implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +21,27 @@ public class Car implements Serializable {
     private int carNum;
     private int carState;
 
+    public int getCarId() {
+        return carId;
+    }
+
+    public void setCarId(int carId) {
+        this.carId = carId;
+    }
+
+    public int getCarNum() {
+        return carNum;
+    }
+
+    public void setCarNum(int carNum) {
+        this.carNum = carNum;
+    }
+
+    public int getCarState() {
+        return carState;
+    }
+
+    public void setCarState(int carState) {
+        this.carState = carState;
+    }
 }

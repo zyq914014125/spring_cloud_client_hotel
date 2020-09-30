@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 @Data
 @Entity
-@Table(name="hotel")
+@Table(name = "hotel")
 public class Hotel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +23,36 @@ public class Hotel implements Serializable {
     @Transient
     private int sceneryId;
 
+    public int getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    public int getHotelCost() {
+        return hotelCost;
+    }
+
+    public void setHotelCost(int hotelCost) {
+        this.hotelCost = hotelCost;
+    }
+
+    public int getSceneryId() {
+        return sceneryId;
+    }
+
+    public void setSceneryId(int sceneryId) {
+        this.sceneryId = sceneryId;
+    }
 }
 

@@ -67,13 +67,14 @@ public class SceneryServiceImpl implements SceneryService {
                 .ofNullable(sceneryDao.getSceneryBySearchVo(serachvo))
                 .orElse(Collections.emptyList()));
     }
+
     //根据id查询
     @Override
     public Result<Scenery> getSceneryBySceneryId(int sceneryId) {
         Scenery scenery = sceneryDao.getSceneryBySceneryId(sceneryId);
-        if (scenery !=null){
+        if (scenery != null) {
             return new Result<Scenery>(Result.ResultState.SUCCESS_RESPONSE, "select success", scenery);
-        }else {
+        } else {
             return new Result<Scenery>(Result.ResultState.ERROR_RESPONSE, "this scenery is not exist");
         }
     }

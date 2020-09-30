@@ -7,11 +7,13 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/Travel-service/pom.xml" />
         <option value="$PROJECT_DIR$/Travel-register/pom.xml" />
         <option value="$PROJECT_DIR$/Travel-admin/pom.xml" />
         <option value="$PROJECT_DIR$/Travel-user/pom.xml" />
+        <option value="$PROJECT_DIR$/Travel-hotel/pom.xml" />
+        <option value="$PROJECT_DIR$/Travel-scenery/pom.xml" />
+        <option value="$PROJECT_DIR$/Travel-CarAndTeam/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

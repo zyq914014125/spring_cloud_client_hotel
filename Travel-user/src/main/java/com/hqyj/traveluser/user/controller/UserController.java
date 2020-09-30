@@ -27,8 +27,8 @@ public class UserController {
      * 127.0.0.1:8150/api/register---post
      * {"user_name":"zyq","user_pwd":"123","user_sex":"男","user_age":"23","user_tel":"1356"}
      */
-    @PostMapping(value = "/register",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Result<User> register(@RequestBody User user){
+    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Result<User> register(@RequestBody User user) {
         return userService.register(user);
     }
 
@@ -42,7 +42,7 @@ public class UserController {
     }
 
     /**
-     *127.0.0.1:8150/api/users ---put
+     * 127.0.0.1:8150/api/users ---put
      * {"userId":"10","userName":"lisa4","userAge":12,"userSex":"女","userTel":"1010"}
      */
     @PutMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -67,5 +67,9 @@ public class UserController {
         return userService.getUserByUserId(userId);
     }
 
+    @PostMapping("/user")
+    public User getUserByUserId(@RequestBody String userName) {
+        return userService.getUserByUserName(userName);
+    }
 
 }

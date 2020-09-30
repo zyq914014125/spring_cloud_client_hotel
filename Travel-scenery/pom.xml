@@ -47,7 +47,7 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.0</version>
         </dependency>
-<!--         pageHelper-->
+        <!--         pageHelper-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
@@ -73,11 +73,11 @@
             <version>1.4.7.RELEASE</version>
         </dependency>
         <!--引入其他jar包-->
-<!--       <dependency>-->
-<!--            <groupId>travel</groupId>-->
-<!--            <artifactId>Travel-common</artifactId>-->
-<!--            <version>1.0.0</version>-->
-<!--        </dependency>-->
+        <!--       <dependency>-->
+        <!--            <groupId>travel</groupId>-->
+        <!--            <artifactId>Travel-common</artifactId>-->
+        <!--            <version>1.0.0</version>-->
+        <!--        </dependency>-->
 
 
         <!--tk.mybatis-->

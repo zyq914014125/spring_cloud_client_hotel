@@ -18,28 +18,28 @@ public class carController {
 
 
     @GetMapping("/car/{carId}")
-    public Car selectAllByCarId(@PathVariable int carId){
+    public Car selectAllByCarId(@PathVariable int carId) {
         return carService.selectCarByCarId(carId);
     }
 
-    @PostMapping(value = "/car",consumes ="application/json")
-    public Result<Car> insertCar(@RequestBody Car car){
+    @PostMapping(value = "/car", consumes = "application/json")
+    public Result<Car> insertCar(@RequestBody Car car) {
         return carService.insertCar(car);
     }
 
     @DeleteMapping("/car/{carId}")
-    public Result<Car> delCar(@PathVariable int carId){
+    public Result<Car> delCar(@PathVariable int carId) {
         return carService.delCar(carId);
     }
 
-    @PutMapping(value = "/car",consumes = "application/json")
-    public Result<Car> updateCar(@RequestBody Car car){
+    @PutMapping(value = "/car", consumes = "application/json")
+    public Result<Car> updateCar(@RequestBody Car car) {
         return carService.updateCar(car);
     }
 
     //查询空闲车辆
     @GetMapping("/car/selectState")
-    public List<Car> selectCarByState(){
+    public List<Car> selectCarByState() {
         return carService.selectCarByState();
     }
 

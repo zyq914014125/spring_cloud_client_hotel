@@ -16,5 +16,5 @@ public interface UserService {
 
     User getUserByUserId(int userId);
 
-
+    User getUserByUserName(String UserName);
 }

@@ -15,10 +15,10 @@ public interface carDao {
     @Select("select c.* from car c where car_id = #{carId}")
     Car selectCarByCarId(int carId);
 
-    @Insert("insert into car(car_id,car_num,car_state)"+
+    @Insert("insert into car(car_id,car_num,car_state)" +
             "values (#{carId},#{carNum},#{carState})"
     )
-    @Options(useGeneratedKeys = true,keyColumn = "car_id",keyProperty = "carId")
+    @Options(useGeneratedKeys = true, keyColumn = "car_id", keyProperty = "carId")
     void insertCar(Car cars);
 
 

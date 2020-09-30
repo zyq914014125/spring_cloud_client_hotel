@@ -20,6 +20,4 @@ public interface PermissionService {
     Result<Object> deletePerm(int permId);
 
 
-
-
 }

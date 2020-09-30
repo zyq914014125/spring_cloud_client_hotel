@@ -1,6 +1,7 @@
 package com.hqyj.traveladmin.service;
 
 import com.hqyj.TravelSpringBoot.module.entity.Team;
+import com.hqyj.traveladmin.service.TeamServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class TeamServiceImpl {
     @Autowired
     private TeamServiceClient teamServiceClient;
-    public Team selectTeamByTeamId(int teamId){
+
+    public Team selectTeamByTeamId(int teamId) {
         return teamServiceClient.selectTeamByTeamId(teamId);
     }
 }

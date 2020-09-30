@@ -19,8 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class TeamController {
     @Autowired
     private TeamServiceImpl teamService;
+
     @GetMapping("/team/{teamId}")
-    public Team selectTeamByTeamId(@PathVariable int teamId){
+    public Team selectTeamByTeamId(@PathVariable int teamId) {
         return teamService.selectTeamByTeamId(teamId);
     }
 }

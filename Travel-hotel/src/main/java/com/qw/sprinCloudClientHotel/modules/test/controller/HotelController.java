@@ -30,10 +30,11 @@ public class HotelController {
     /**
      * 127.0.0.1:8764/api/scenery/1 ---- get
      * 通过景点id查询酒店
+     *
      * @PathVariable 获取路径参数
      */
     @GetMapping("/scenery/{sceneryId}")
-    public List<Hotel> getHotelsBySceneryId(@PathVariable int sceneryId){
+    public List<Hotel> getHotelsBySceneryId(@PathVariable int sceneryId) {
         return hotelService.getHotelsBySceneryId(sceneryId);
     }
 
@@ -42,7 +43,7 @@ public class HotelController {
      * 查询所有
      */
     @GetMapping("/hotels")
-    public List<Hotel> getHotels(){
+    public List<Hotel> getHotels() {
         return hotelService.getHotels();
     }
 
@@ -51,8 +52,8 @@ public class HotelController {
      * {"hotelName":"阿玛尼大酒店"}
      * 新增
      */
-    @PostMapping(value = "/hotel",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Result<Hotel> insertHotel(@RequestBody Hotel hotel){
+    @PostMapping(value = "/hotel", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Result<Hotel> insertHotel(@RequestBody Hotel hotel) {
         return hotelService.insertHotel(hotel);
     }
 
@@ -61,8 +62,8 @@ public class HotelController {
      * {"currentPage":"1","pageSize":"5","keyWord":"青","orderBy":"hotel_name","sort":"desc"}
      * 模糊查询，脚本查询
      */
-    @PostMapping(value = "/hotels",consumes = "application/json")
-    public PageInfo<Hotel> getHotelsBySearchVo(@RequestBody Serachvo serachvo){
+    @PostMapping(value = "/hotels", consumes = "application/json")
+    public PageInfo<Hotel> getHotelsBySearchVo(@RequestBody Serachvo serachvo) {
         return hotelService.getHotelsBySearchVo(serachvo);
     }
 
@@ -71,8 +72,8 @@ public class HotelController {
      * {"hotelName":"aaa","hotelId":"69"}
      * 修改
      */
-    @PutMapping(value = "/updateHotel",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Result<Hotel> updateHotel(@RequestBody Hotel hotel){
+    @PutMapping(value = "/updateHotel", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Result<Hotel> updateHotel(@RequestBody Hotel hotel) {
         return hotelService.updateHotel(hotel);
     }
 
@@ -81,7 +82,7 @@ public class HotelController {
      * 删除
      */
     @DeleteMapping("/deleteHotel/{hotelId}")
-    public Result<Object> deleteHotel(@PathVariable int hotelId){
+    public Result<Object> deleteHotel(@PathVariable int hotelId) {
         return hotelService.deleteHotel(hotelId);
     }
 
@@ -90,7 +91,7 @@ public class HotelController {
      * 查询
      */
     @GetMapping("/hotel/{hotelId}")
-    public Hotel getHotelByHotelId(@PathVariable int hotelId){
+    public Hotel getHotelByHotelId(@PathVariable int hotelId) {
         return hotelService.getHotelByHotelId(hotelId);
     }
 }

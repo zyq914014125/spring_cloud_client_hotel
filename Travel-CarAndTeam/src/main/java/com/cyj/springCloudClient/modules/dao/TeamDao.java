@@ -21,7 +21,7 @@ public interface TeamDao {
             "car_id=#{carId} where team_id =#{teamId}")
     void updateTeam(Team team);
 
-    @Insert("insert into team(end_time,send_time,team_name,tourguid_id,route_id,car_id)"+
+    @Insert("insert into team(end_time,send_time,team_name,tourguid_id,route_id,car_id)" +
             "values (#{endTime},#{sendTime},#{teamName},#{tourguidId},#{routeId},#{carId})")
     void insertTeam(Team team);
 

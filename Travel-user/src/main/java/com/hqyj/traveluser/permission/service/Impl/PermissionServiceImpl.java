@@ -49,6 +49,6 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     public Result<Object> deletePerm(int permId) {
         permissionMapper.deletePerm(permId);
-        return new Result<Object>(Result.ResultState.SUCCESS_RESPONSE,"delete permission success!");
+        return new Result<Object>(Result.ResultState.SUCCESS_RESPONSE, "delete permission success!");
     }
 }

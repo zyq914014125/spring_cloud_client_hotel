@@ -1,510 +1,549 @@
-	<!DOCTYPE html>
-	<html lang="zxx" class="no-js">
-	<head>
-		<!-- Mobile Specific Meta -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<!-- Favicon-->
-		<link rel="shortcut icon" href="img/fav.png">
-		<!-- Author Meta -->
-		<meta name="author" content="colorlib">
-		<!-- Meta Description -->
-		<meta name="description" content="">
-		<!-- Meta Keyword -->
-		<meta name="keywords" content="">
-		<!-- meta character set -->
-		<meta charset="UTF-8">
-		<!-- Site Title -->
-		<title>Home</title>
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org" class="no-js"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" th:href="${'/img/fav.png'}">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Home</title>
 
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
-			<!--
-			CSS
-			============================================= -->
-			<link rel="stylesheet" href="css/linearicons.css">
-			<link rel="stylesheet" href="css/font-awesome.min.css">
-			<link rel="stylesheet" href="css/bootstrap.css">
-			<link rel="stylesheet" href="css/magnific-popup.css">
-			<link rel="stylesheet" href="css/animate.min.css">
-			<link rel="stylesheet" href="css/owl.carousel.css">
-			<link rel="stylesheet" href="css/main.css">
-			<style>
-				.L_center_img{
-					    min-width: 35%;
-					     vertical-align: middle;
-					     border-radius: 3px;
-					     height: 180px;
-					 vertical-align:middle;
-				 }</style>
-		</head>
-		<body>
-			<!-- start banner Area -->
-			<section class="banner-area" id="home">
-				<!-- Start Header Area -->
-				<header class="default-header">
-					<nav class="navbar navbar-expand-lg  navbar-light">
-						<div class="container">
-							  <a class="navbar-brand" href="index.html">
-							  	<img src="img/logo.png" alt="">
-							  </a>
-							  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							    <span class="text-white lnr lnr-menu"></span>
-							  </button>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" th:href="${'/css/linearicons.css'}">
+    <link rel="stylesheet" th:href="${'/css/font-awesome.min.css'}">
+    <link rel="stylesheet" th:href="${'/css/bootstrap.css'}">
+    <link rel="stylesheet" th:href="${'/css/magnific-popup.css'}">
+    <link rel="stylesheet" th:href="${'/css/animate.min.css'}">
+    <link rel="stylesheet" th:href="${'/css/owl.carousel.css'}">
+    <link rel="stylesheet" th:href="${'/css/main.css'}">
+    <style>
+        .L_center_img {
+            min-width: 35%;
+            vertical-align: middle;
+            border-radius: 3px;
+            height: 180px;
+            vertical-align: middle;
+        }</style>
+</head>
+<body>
+<!-- start banner Area -->
+<section class="banner-area" id="home">
+    <!-- Start Header Area -->
+    <header class="default-header">
+        <nav class="navbar navbar-expand-lg  navbar-light">
+            <div class="container">
+                <!--							  <img class="navbar-brand" href="index.html">-->
+                <!--								  <img  th:src="${'img/logo.png'}" alt=""></img>-->
+                <!--							  </a>-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="text-white lnr lnr-menu"></span>
+                </button>
 
-							  <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
-							    <ul class="navbar-nav">
-									<li><a href="#home">首页</a></li>
-									<li><a href="#about">热推路线</a></li>									
-									<li><a href="#secvice">私人定制</a></li>
-									<li><a href="#gallery">联系我们</a></li>
-									<!-- Dropdown -->
-								    <li class="dropdown">
-								      <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-								        想要登陆吗？
-								      </a>
-								      <div class="dropdown-menu">
-								        <a class="dropdown-item" href="generic.html">登录</a>
-								        <a class="dropdown-item" href="elements.html">注册</a>
-								      </div>
-								    </li>
-							    </ul>
-							  </div>						
-						</div>
-					</nav>
-				</header>
-				<!-- End Header Area -->				
-			</section>
+                <div class="collapse navbar-collapse justify-content-end align-items-center"
+                     id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li><a href="/travel">首页</a></li>
+                        <li><a href="/routes">热推路线</a></li>
+                        <li><a href="#secvice">私人定制</a></li>
+                        <li><a href="#gallery">联系我们</a></li>
+                        <!-- Dropdown -->
+                        <li class="dropdown" shiro:notAuthenticated>
+                            <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                想要登陆吗？
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/login">登录</a>
+                                <a class="dropdown-item" href="/register">注册</a>
+                            </div>
+                        </li>
+                        <li class="dropdown" shiro:authenticated="true">
+                            <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                已登录
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/loginout">注销</a>
+                                <a class="dropdown-item" href="/loginout">个人中心</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End Header Area -->
+</section>
 
-			<section class="default-banner active-blog-slider">
-					<div class="item-slider relative" style="background: url(img/Hw.jpg);background-size: cover;">
-						<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
-						<div class="container">
-							<div class="row fullscreen justify-content-center align-items-center">
-								<div class="col-md-10 col-12">
-									<div class="banner-content text-center">
-										<h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
-										<h1 class="text-uppercase text-white">花舞人间</h1>
-										<p class="text-white">花舞人间占地3000余亩，位于四川成都南郊新津区 ，距离成都市区仅30余公里，是赏花、玩水，体验低碳休闲度假的国家4A级旅游景区。景区拥有郁金香节、杜鹃花节、鲁冰花节、向日葵节、百合花节、野菊花节、花粉节、兰花红叶节等多个主题花节庆，使得景区365天花开不断，被誉为“西南赏花首选地”！</p>
-										<a href="#" class="text-uppercase header-btn">去游玩吧！</a>
-									</div>
-								</div>
+<section class="default-banner active-blog-slider">
+    <div class="item-slider relative" style="background: url(/img/Hw.jpg);background-size: cover;">
+        <div class="overlay" style="background: rgba(0,0,0,.3)"></div>
+        <div class="container">
+            <div class="row fullscreen justify-content-center align-items-center">
+                <div class="col-md-10 col-12">
+                    <div class="banner-content text-center">
+                        <h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
+                        <h1 class="text-uppercase text-white">花舞人间</h1>
+                        <p class="text-white">花舞人间占地3000余亩，位于四川成都南郊新津区
+                            ，距离成都市区仅30余公里，是赏花、玩水，体验低碳休闲度假的国家4A级旅游景区。景区拥有郁金香节、杜鹃花节、鲁冰花节、向日葵节、百合花节、野菊花节、花粉节、兰花红叶节等多个主题花节庆，使得景区365天花开不断，被誉为“西南赏花首选地”！</p>
+                        <a href="#" class="text-uppercase header-btn">去游玩吧！</a>
+                    </div>
+                </div>
 
-							</div>
-						</div>
-					</div>
-					<div class="item-slider relative" style="background: url(img/BLT.png);background-size: cover;">
-						<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
-						<div class="container">
-							<div class="row fullscreen justify-content-center align-items-center">
-								<div class="col-md-10 col-12">
-									<div class="banner-content text-center">
-										<h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
-										<h1 class="text-uppercase text-white">巴灵台</h1>
-										<p class="text-white">巴灵台又称巴灵寨，位于四川省巴中市平昌县灵山镇，地处三巴（巴东、巴西、巴中）腹地，距平昌县城28公里，主峰海拔760余米，台上东西长约300米，南北最宽处约25米，最窄处仅3米，面积约6000平方米，四面峻峭，由巨石垒成，山顶突起如台，远观形如天马，素有“铁打巴灵寨”之称。巴灵台集儒教、道教、佛教于一山，系米仓古道的重要节点、古巴国祭天遗址，是国家AAAA级旅游景区。2005年温家宝总理视察灵山镇巴灵台。</p>
-										<a href="#" class="text-uppercase header-btn">去游玩吧 ！</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item-slider relative" style="background: url(img/JZLWH.png);background-size: cover;">
-						<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
-						<div class="container">
-							<div class="row fullscreen justify-content-center align-items-center">
-								<div class="col-md-10 col-12">
-									<div class="banner-content text-center">
-										<h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
-										<h1 class="text-uppercase text-white">九寨沟-芦苇海</h1>
-										<p class="text-white">九寨沟国家级自然保护区位于四川省阿坝藏族羌族自治州九寨沟县境内，是中国第一个以保护自然风景为主要目的的自然保护区，也是中国著名风景名胜区和全国文明风景旅游区示范点，被纳入《世界自然遗产名录》、“人与生物圈”保护网络。</p>
-										<a href="#" class="text-uppercase header-btn">去游玩吧！</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item-slider relative" style="background: url(img/DFCT2.png);background-size: cover;">
-						<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
-						<div class="container">
-							<div class="row fullscreen justify-content-center align-items-center">
-								<div class="col-md-10 col-12">
-									<div class="banner-content text-center">
-										<h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
-										<h1 class="text-uppercase text-white">杜甫草堂</h1>
-										<p class="text-white">成都杜甫草堂博物馆位于四川省成都市青羊区青华路37号，是中国唐代大诗人杜甫流寓成都时的故居。杜甫先后在此居住近四年，创作诗歌240余首。唐末诗人韦庄寻得草堂遗址，重结茅屋，使之得以保存，宋元明清历代都有修葺扩建</p>
-										<a href="#" class="text-uppercase header-btn">去游玩吧！</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item-slider relative" style="background: url(img/HLX.png);background-size: cover;">
-						<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
-						<div class="container">
-							<div class="row fullscreen justify-content-center align-items-center">
-								<div class="col-md-10 col-12">
-									<div class="banner-content text-center">
-										<h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
-										<h1 class="text-uppercase text-white">黄龙溪</h1>
-										<p class="text-white">黄龙溪镇，隶属于四川省成都市双流区。黄龙溪镇有2100余年历史，位于成都平原南部、成都市双流区南端，与仁寿、彭山、新津接壤。距成都市中心39公里，距双流机场(东升街道)35公里，距天府新区华阳街道28公里。是天府新区核心区15分钟经济圈，属于天府新区文化生态休闲区</p>
-										<a href="#" class="text-uppercase header-btn">去游玩吧！</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+            </div>
+        </div>
+    </div>
+    <div class="item-slider relative" style="background: url(/img/BLT.png);background-size: cover;">
+        <div class="overlay" style="background: rgba(0,0,0,.3)"></div>
+        <div class="container">
+            <div class="row fullscreen justify-content-center align-items-center">
+                <div class="col-md-10 col-12">
+                    <div class="banner-content text-center">
+                        <h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
+                        <h1 class="text-uppercase text-white">巴灵台</h1>
+                        <p class="text-white">
+                            巴灵台又称巴灵寨，位于四川省巴中市平昌县灵山镇，地处三巴（巴东、巴西、巴中）腹地，距平昌县城28公里，主峰海拔760余米，台上东西长约300米，南北最宽处约25米，最窄处仅3米，面积约6000平方米，四面峻峭，由巨石垒成，山顶突起如台，远观形如天马，素有“铁打巴灵寨”之称。巴灵台集儒教、道教、佛教于一山，系米仓古道的重要节点、古巴国祭天遗址，是国家AAAA级旅游景区。2005年温家宝总理视察灵山镇巴灵台。</p>
+                        <a href="#" class="text-uppercase header-btn">去游玩吧 ！</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item-slider relative" style="background: url(/img/JZLWH.png);background-size: cover;">
+        <div class="overlay" style="background: rgba(0,0,0,.3)"></div>
+        <div class="container">
+            <div class="row fullscreen justify-content-center align-items-center">
+                <div class="col-md-10 col-12">
+                    <div class="banner-content text-center">
+                        <h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
+                        <h1 class="text-uppercase text-white">九寨沟-芦苇海</h1>
+                        <p class="text-white">
+                            九寨沟国家级自然保护区位于四川省阿坝藏族羌族自治州九寨沟县境内，是中国第一个以保护自然风景为主要目的的自然保护区，也是中国著名风景名胜区和全国文明风景旅游区示范点，被纳入《世界自然遗产名录》、“人与生物圈”保护网络。</p>
+                        <a href="#" class="text-uppercase header-btn">去游玩吧！</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item-slider relative" style="background: url(/img/DFCT2.png);background-size: cover;">
+        <div class="overlay" style="background: rgba(0,0,0,.3)"></div>
+        <div class="container">
+            <div class="row fullscreen justify-content-center align-items-center">
+                <div class="col-md-10 col-12">
+                    <div class="banner-content text-center">
+                        <h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
+                        <h1 class="text-uppercase text-white">杜甫草堂</h1>
+                        <p class="text-white">
+                            成都杜甫草堂博物馆位于四川省成都市青羊区青华路37号，是中国唐代大诗人杜甫流寓成都时的故居。杜甫先后在此居住近四年，创作诗歌240余首。唐末诗人韦庄寻得草堂遗址，重结茅屋，使之得以保存，宋元明清历代都有修葺扩建</p>
+                        <a href="#" class="text-uppercase header-btn">去游玩吧！</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item-slider relative" style="background: url(/img/HLX.png);background-size: cover;">
+        <div class="overlay" style="background: rgba(0,0,0,.3)"></div>
+        <div class="container">
+            <div class="row fullscreen justify-content-center align-items-center">
+                <div class="col-md-10 col-12">
+                    <div class="banner-content text-center">
+                        <h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
+                        <h1 class="text-uppercase text-white">黄龙溪</h1>
+                        <p class="text-white">
+                            黄龙溪镇，隶属于四川省成都市双流区。黄龙溪镇有2100余年历史，位于成都平原南部、成都市双流区南端，与仁寿、彭山、新津接壤。距成都市中心39公里，距双流机场(东升街道)35公里，距天府新区华阳街道28公里。是天府新区核心区15分钟经济圈，属于天府新区文化生态休闲区</p>
+                        <a href="#" class="text-uppercase header-btn">去游玩吧！</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-			<!-- Start about Area -->
-			<section class="section-gap info-area" id="about">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-40 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">旅行的意义不在其他，而在自己身体和心灵，必须有一个在旅行的路上。</h1>
-								<p>旅行的理由不需要阐述太多，一个字就可以概括全部：走！</p>
-							</div>
-						</div>
-					</div>					
-					<div class="single-info row mt-40">
-						<div class="col-lg-6 col-md-12 mt-120 text-center no-padding info-left">
-							<div class="info-thumb">
-								<img src="img/about-img.jpg" class="img-fluid" alt="">
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-12 no-padding info-rigth">
-							<div class="info-content">
-								<h2 class="pb-30">身未动，心已远
-								</h2>
-								<p>
-									梦想，并不遥远，只要勇敢地迈出第一步。旅行，并不奢侈，只需背上行囊，走向远方。									
-								</p>
-								<br>
-								<p>
-									一个人的旅行，在路上遇见最真实的自己。一路涉足、一路留恋、一路回望。依旧前行！一辈子是场修行，短的是旅行，长的是人生。一颗说走就走的心，一个会拍照的情侣，一段甜蜜的旅程。					
-								</p>
-								<br>
-								<p>
-									旅游不在乎终点，而是在意途中的人和事还有那些美好的记忆和景色。人生至少要有两次冲动，一为奋不顾身的爱情，一为说走就走的旅行。旅行是一种病，当你把身边的人都传染了，而你自己根本不想从中跑出来。流转的时光，都成为命途中美丽的点缀，看天，看雪，安安静静，不言不语都是好风景。
-								</p>
-								<p>
-									我想一个人旅行，可以不带相机，也不要带上手机，但一定要背上几本书，在花海里，草丛旁悠然品味，闲淡时光里徜徉书海。一个人的旅行，我走过了一季又一季，从夏蝉鸣叫，到雪花飘飞。一个人的旅行，我漂泊了一程又一程，从韶华年茂，到眉宇沧桑。我想去旅行，一个人背包，一个人旅行，一个人目睹沿途的风景，拿着相机，拍下沿途上的风景，记录沿途的心情。那样的生活才是我想要的。
-								</p>
-								</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End about Area -->
-			
-			
-			<!-- Start project Area -->
-			<section class="project-area section-gap" id="project">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-30 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">热推路线</h1>
-								<p>如果您想旅行，但苦于没有目标或者规划，不妨看看我们的路线推荐</p>
-							</div>
-						</div>
-					</div>						
-					<div class="row justify-content-center d-flex">
-						<div class="active-works-carousel mt-40 col-lg-8">
-							<div class="item">
-								<img class="img-fluid" src="img/Route1.jpg" alt="">
-								<div class="caption text-center mt-20">
-									<h6 class="text-uppercase">起点:春熙路</h6>
-									<p>春熙路位于四川省成都市锦江区春熙路街道，覆盖北新街以东、总府路以南、红星路以西、东大街以北、南新街、中新街以及临街区域，面积大约20公顷。春熙路热闹繁华，现大约有商业网点700家，网点面积大约220000㎡。</p>
-								</div>
-							</div>
-							<div class="item">
-								<img class="img-fluid" src="img/Route2.jpg" alt="">
-								<div class="caption text-center mt-20">
-									<h6 class="text-uppercase">大熊猫繁育研究基地</h6>
-									<p>成都大熊猫繁育研究基地，又名熊猫基地，是一个专门从事濒危野生动物研究、繁育、保护教育和教育旅游的非营利性机构。<br>
-成都大熊猫繁育研究基地位于成都北郊斧头山山侧的浅丘上，建成了科研大楼、开放研究实验室、兽医院、兽舍和熊猫活动场、天鹅湖、大熊猫博物馆、大熊猫医院、大熊猫厨房等，形成竹木苍翠，鸟语花香，集自然山野风光和优美人工景观为一体，适宜大熊猫及多种珍稀野生动物生息繁衍的生态环境。</p>
-								</div>
-							</div>
-							<div class="item">
-								<img class="img-fluid" src="img/Route3.jpg" alt="">
-								<div class="caption text-center mt-20">
-									<h6 class="text-uppercase">都江堰</h6>
-									<p>都江堰坐落在成都平原西部的岷江上，始建于秦昭王末年(约公元前256~前251) ，是蜀郡太守李冰父子在前人鳖灵开凿的基础上组织修建的大型水利工程，由分水鱼嘴、飞沙堰、宝瓶口等部分组成，两千多年来一直发挥着防洪灌溉的作用，使成都平原成为水旱从人、沃野千里的"天府之国"，至今灌区已达30余县市、面积近千万亩，是全世界迄今为止，年代最久、唯一留存、以无坝引水为特征的宏大水利工程，凝聚着中国古代劳动人民勤劳、勇敢、智慧的结晶。</p>
-								</div>
-							</div>
-							<div class="item">
-								<img class="img-fluid" src="img/Route4.jpg" alt="">
-								<div class="caption text-center mt-20">
-									<h6 class="text-uppercase">青城山</h6>
-									<p>青城山位于四川省都江堰市西南、成都平原西北部、青城山-都江堰风景区内，距成都68公里，距都江堰市区16公里。古称丈人山，为邛崃山脉的分支。青城山靠岷山雪岭，面向川西平原。主峰老霄顶海拔1260米(2007年测到的数据)。全山林木青翠，四季常青，诸峰环峙，状若城廓，故名青城山。丹梯千级，曲径通幽，以幽洁取胜，自古就有“青城天下幽”的美誉。与剑门之险、峨眉之秀、夔门之雄齐名。青城山背靠千里岷江，俯瞰成都平原，景区面积200平方公里。古人记述中，青城山有“三十六峰”“八大洞”“七十二小洞”“一百八景”之说。</p>
-								</div>
-							</div>
-							<div class="item">
-								<img class="img-fluid" src="img/Route5.jpg" alt="">
-								<div class="caption text-center mt-20">
-									<h6 class="text-uppercase">终点：锦鲤</h6>
-									<p>锦里位于四川省成都市武侯区武侯祠大街。传说中锦里曾是西蜀历史上最古老、最具有商业气息的街道之一，早在秦汉、三国时期便闻名全国。现在，锦里占地30000余平方米，建筑面积约14000平方米，街道全长550米，以明末清初川西民居作外衣，三国文化与成都民俗作内涵，集旅游购物、休闲娱乐为一体。</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<center>
-					<a href="#" class="text-uppercase header-btn" style="color: #00B34A;">
-					更多热推路线
-					</a>
-					</center>
-				</div>	
-			</section>
-			<!-- End project Area -->
+<!-- Start about Area -->
+<section class="section-gap info-area" id="about">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-40 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">旅行的意义不在其他，而在自己身体和心灵，必须有一个在旅行的路上。</h1>
+                    <p>旅行的理由不需要阐述太多，一个字就可以概括全部：走！</p>
+                </div>
+            </div>
+        </div>
+        <div class="single-info row mt-40">
+            <div class="col-lg-6 col-md-12 mt-120 text-center no-padding info-left">
+                <div class="info-thumb">
+                    <img th:src="${'/img/about-img.jpg'}" class="img-fluid" alt=""/>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 no-padding info-rigth">
+                <div class="info-content">
+                    <h2 class="pb-30">身未动，心已远
+                    </h2>
+                    <p>
+                        梦想，并不遥远，只要勇敢地迈出第一步。旅行，并不奢侈，只需背上行囊，走向远方。
+                    </p>
+                    <br>
+                    <p>
+                        一个人的旅行，在路上遇见最真实的自己。一路涉足、一路留恋、一路回望。依旧前行！一辈子是场修行，短的是旅行，长的是人生。一颗说走就走的心，一个会拍照的情侣，一段甜蜜的旅程。
+                    </p>
+                    <br>
+                    <p>
+                        旅游不在乎终点，而是在意途中的人和事还有那些美好的记忆和景色。人生至少要有两次冲动，一为奋不顾身的爱情，一为说走就走的旅行。旅行是一种病，当你把身边的人都传染了，而你自己根本不想从中跑出来。流转的时光，都成为命途中美丽的点缀，看天，看雪，安安静静，不言不语都是好风景。
+                    </p>
+                    <p>
+                        我想一个人旅行，可以不带相机，也不要带上手机，但一定要背上几本书，在花海里，草丛旁悠然品味，闲淡时光里徜徉书海。一个人的旅行，我走过了一季又一季，从夏蝉鸣叫，到雪花飘飞。一个人的旅行，我漂泊了一程又一程，从韶华年茂，到眉宇沧桑。我想去旅行，一个人背包，一个人旅行，一个人目睹沿途的风景，拿着相机，拍下沿途上的风景，记录沿途的心情。那样的生活才是我想要的。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End about Area -->
 
 
-			<!-- Start feature Area -->
-			<section class="feature-area section-gap" id="secvice">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-60 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">热门景点</h1>
-								<p>.</p>
-							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-user"></span>
-									<h4><a href="#">自贡井天池寺</a></h4>
-								</div>
-								<p>
-									天池寺坐落在自贡市贡井区艾叶乡竹林村，寺前有久负盛名的大公井遗址，寺后有天心窝山，寺左有尖峰岭山，寺右为云盘山。该寺建于明朝洪武年间，距今已有六百多年历史。 天池寺内因有一大池，故名天池寺。
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-license"></span>
-									<h4><a href="#">宽窄巷子</a></h4>
-								</div>
-								<p>
-									宽窄巷子位于四川省成都市青羊区长顺街附近，由宽巷子、窄巷子、井巷子平行排列组成，全为青黛砖瓦的仿古四合院落，这里也是成都遗留下来的较成规模的清朝古街道，与大慈寺、文殊院一起并称为成都三大历史文化名城保护街区。
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-phone"></span>
-									<h4><a href="#">西岭雪山</a></h4>
-								</div>
-								<p>
-									西岭雪山，位于四川省成都市大邑县境内，距成都仅95公里，总面积375平方公里，属世界自然遗产、大熊猫栖息地、国家AAAA级旅游景区、国家重点风景名胜区，因唐代大诗人杜甫的千古绝句"窗含西岭千秋雪，门泊东吴万里船"而得名。景区内有终年积雪的大雪山，海拔5353米，为成都第一峰
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-rocket"></span>
-									<h4><a href="#">国色天香</a></h4>
-								</div>
-								<p>
-									置信国色天乡乐园，由成都置信实业(集团)有限公司开发，投资20亿人民币，位于成都市温江区万春镇，属国家级重点生态示范区，国家4A级景区，项目集上千亩主题公园、五星级酒店、会议中心、高尚国际主题社区、自然生态绿地于一体，并辅以欧洲风情商业中心、国际双语学校、幼儿园、大型医院等完善的配套设施，旨在打造一座旷世的"国色天乡国际度假区"。
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-diamond"></span>
-									<h4><a href="#">峨眉山</a></h4>
-								</div>
-								<p>
-									峨眉山(Mount Emei)位于北纬30°附近，四川省西南部，四川盆地的西南边缘 ，是中国"四大佛教名山"之一，地势陡峭，风景秀丽，素有"峨眉天下秀"之称，山上的万佛顶最高，海拔3099米，高出峨眉平原2700多米。《峨眉郡志》云:"云鬘凝翠，鬒黛遥妆，真如螓首蛾眉，细而长，美而艳也，故名峨眉山。"
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-bubble"></span>
-									<h4><a href="#">黄龙</a></h4>
-								</div>
-								<p>
-									黄龙风景名胜区因沟中有许多彩池，随着周围景色变化和阳光照射角度变化变幻出五彩的颜色，被誉为"人间瑶池"。由黄龙沟、丹云峡、牟尼沟、雪宝鼎、雪山梁、红星岩，西沟等景区组成，主景区黄龙沟位于岷山主峰雪宝顶下，面临涪江源流，长7.5千米，宽1.5千米。
-								</p>							
-							</div>							
-						</div>																					
-					</div>
-					<center>
-					<a href="#" class="text-uppercase header-btn" style="color: #5d99b3;">
-					更多热推路线
-					</a>
-					</center>
-				</div>	
-			</section>
-			<!-- End feature Area -->
-		<!-- Start gallery Area -->
-		<section class="gallery-area" id="gallery">
-			<div class="container-fluid">
-				<div class="row no-padding">
-					<div class="active-gallery">
-						<div class="item">
-							<img src="img/TCS.jpg" alt="" class="L_center_img">
-						</div>	
-						<div class="item ">
-							<img src="img/KZXZ.jpg" alt="" class="L_center_img">
-						</div>	
-						<div class="item ">
-							<img src="img/XLXS.jpg" alt="" class="L_center_img">
-						</div>	
-						<div class="item ">
-							<img src="img/GSTX.jpg" alt="" class="L_center_img">
-						</div>	
-						<div class="item ">
-							<img src="img/EMS.jpg" alt="" class="L_center_img">
-						</div>	
-						<div class="item ">
-							<img src="img/HL.jpg" alt="" class="L_center_img">
-						</div>																		
-					</div>
-				</div>
-			</div>	
-		</section>
-		<!-- End gallery Area -->
-		
-			<!-- End faq Area -->
-			
-			
-			<!-- Start Video Area -->
-			<section class="video-area pt-40 pb-40">
-				<div class="overlay overlay-bg"></div>
-				<div class="container">
-					<div class="video-content">
-						<a href="" class="play-btn"><img src="img/play-btn.png" alt=""></a>
-						<div class="video-desc">
-							<h3 class="h2 text-white text-uppercase">Being unique is the preference</h3>
-							<h4 class="text-white">Youtube video will appear in popover</h4>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- Start Video Area -->
-			
-
-			
-			<!-- Start logo Area -->
-			<section class="logo-area">
-				<div class="container">
-					<div class="row">
-						
-					</div>
-				</div>	
-			</section>
-			<!-- End logo Area -->
-			
-							
-			<!-- start contact Area -->		
-			<section class="contact-area section-gap" id="contact">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-60 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">如果您想私人定制，欢迎联系我们</h1>
-								<p>来一场说走就走的旅行.</p>
-							</div>
-						</div>
-					</div>										
-					<form class="form-area " id="myForm" action="mail.php" method="post" class="contact-form text-right">
-						<div class="row">	
-						<div class="col-lg-6 form-group">
-							<input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
-						
-							<input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
-
-							<input name="subject" placeholder="Enter your subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your subject'" class="common-input mb-20 form-control" required="" type="text">
-						</div>
-						<div class="col-lg-6 form-group">
-							<textarea class="common-textarea mt-10 form-control" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required></textarea>
-							<button class="primary-btn mt-20">Send Message<span class="lnr lnr-arrow-right"></span></button>
-							<div class="alert-msg">								
-						</div>
-						</div></div>
-					</form>						
-					
-				</div>	
-			</section>
-			<!-- end contact Area -->		
-			
-			<!-- start footer Area -->		
-			<footer class="footer-area section-gap">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-5 col-md-6 col-sm-6">
-							<div class="single-footer-widget">
-								<h6>About Us</h6>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
-								</p>
-								
-            		<p class="footer-text">Copyright &copy; 2020.Company name All rights reserved.</p>
-            		
-							</div>
-						</div>
-						<div class="col-lg-5  col-md-6 col-sm-6">
-							<div class="single-footer-widget">
-								<h6>Newsletter</h6>
-								<p>Stay update with our latest</p>
-								<div class="" id="mc_embed_signup">
-
-										<form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
-
-										<div class="d-flex flex-row">
-
-											<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
+<!-- Start project Area -->
+<section class="project-area section-gap" id="project">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-30 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">热推路线</h1>
+                    <p>如果您想旅行，但苦于没有目标或者规划，不妨看看我们的路线推荐</p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center d-flex">
+            <div class="active-works-carousel mt-40 col-lg-8">
+                <div class="item">
+                    <img class="img-fluid" th:src="${'/img/Route1.jpg'}" alt="">
+                    <div class="caption text-center mt-20">
+                        <h6 class="text-uppercase">起点:春熙路</h6>
+                        <p>
+                            春熙路位于四川省成都市锦江区春熙路街道，覆盖北新街以东、总府路以南、红星路以西、东大街以北、南新街、中新街以及临街区域，面积大约20公顷。春熙路热闹繁华，现大约有商业网点700家，网点面积大约220000㎡。</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-fluid" th:src="${'/img/Route2.jpg'}" alt="">
+                    <div class="caption text-center mt-20">
+                        <h6 class="text-uppercase">大熊猫繁育研究基地</h6>
+                        <p>成都大熊猫繁育研究基地，又名熊猫基地，是一个专门从事濒危野生动物研究、繁育、保护教育和教育旅游的非营利性机构。<br>
+                            成都大熊猫繁育研究基地位于成都北郊斧头山山侧的浅丘上，建成了科研大楼、开放研究实验室、兽医院、兽舍和熊猫活动场、天鹅湖、大熊猫博物馆、大熊猫医院、大熊猫厨房等，形成竹木苍翠，鸟语花香，集自然山野风光和优美人工景观为一体，适宜大熊猫及多种珍稀野生动物生息繁衍的生态环境。
+                        </p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-fluid" th:src="${'/img/Route3.jpg'}" alt="">
+                    <div class="caption text-center mt-20">
+                        <h6 class="text-uppercase">都江堰</h6>
+                        <p>都江堰坐落在成都平原西部的岷江上，始建于秦昭王末年(约公元前256~前251)
+                            ，是蜀郡太守李冰父子在前人鳖灵开凿的基础上组织修建的大型水利工程，由分水鱼嘴、飞沙堰、宝瓶口等部分组成，两千多年来一直发挥着防洪灌溉的作用，使成都平原成为水旱从人、沃野千里的"天府之国"，至今灌区已达30余县市、面积近千万亩，是全世界迄今为止，年代最久、唯一留存、以无坝引水为特征的宏大水利工程，凝聚着中国古代劳动人民勤劳、勇敢、智慧的结晶。</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-fluid" th:src="${'/img/Route4.jpg'}" alt="">
+                    <div class="caption text-center mt-20">
+                        <h6 class="text-uppercase">青城山</h6>
+                        <p>
+                            青城山位于四川省都江堰市西南、成都平原西北部、青城山-都江堰风景区内，距成都68公里，距都江堰市区16公里。古称丈人山，为邛崃山脉的分支。青城山靠岷山雪岭，面向川西平原。主峰老霄顶海拔1260米(2007年测到的数据)。全山林木青翠，四季常青，诸峰环峙，状若城廓，故名青城山。丹梯千级，曲径通幽，以幽洁取胜，自古就有“青城天下幽”的美誉。与剑门之险、峨眉之秀、夔门之雄齐名。青城山背靠千里岷江，俯瞰成都平原，景区面积200平方公里。古人记述中，青城山有“三十六峰”“八大洞”“七十二小洞”“一百八景”之说。</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-fluid" th:src="${'/img/Route5.jpg'}" alt="">
+                    <div class="caption text-center mt-20">
+                        <h6 class="text-uppercase">终点：锦鲤</h6>
+                        <p>
+                            锦里位于四川省成都市武侯区武侯祠大街。传说中锦里曾是西蜀历史上最古老、最具有商业气息的街道之一，早在秦汉、三国时期便闻名全国。现在，锦里占地30000余平方米，建筑面积约14000平方米，街道全长550米，以明末清初川西民居作外衣，三国文化与成都民俗作内涵，集旅游购物、休闲娱乐为一体。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <center>
+            <a href="/routes" class="text-uppercase header-btn" style="color: #00B34A;">
+                更多热推路线
+            </a>
+        </center>
+    </div>
+</section>
+<!-- End project Area -->
 
 
-				                            	<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-				                            	<div style="position: absolute; left: -5000px;">
-													<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-												</div>
-				                          	
-											<!-- <div class="col-lg-4 col-md-4">
-												<button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-											</div>  -->
-										</div>		
-										<div class="info"></div>
-										</form>
-								</div>
-								</div>
-						</div>						
-						<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
-							<div class="single-footer-widget">
-								<h6>Follow Us</h6>
-								<p>Let us be social</p>
-								<div class="footer-social d-flex align-items-center">
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-									<a href="#"><i class="fa fa-dribbble"></i></a>
-									<a href="#"><i class="fa fa-behance"></i></a>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>
-			</footer>	
-			<!-- End footer Area -->			
+<!-- Start feature Area -->
+<section class="feature-area section-gap" id="secvice">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">热门景点</h1>
+                    <p>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 ">
+                <div class="single-feature mb-30">
+                    <div class="title d-flex flex-row pb-20">
+                        <span class="lnr lnr-user"></span>
+                        <h4><a href="#">自贡井天池寺</a></h4>
+                    </div>
+                    <p>
+                        天池寺坐落在自贡市贡井区艾叶乡竹林村，寺前有久负盛名的大公井遗址，寺后有天心窝山，寺左有尖峰岭山，寺右为云盘山。该寺建于明朝洪武年间，距今已有六百多年历史。 天池寺内因有一大池，故名天池寺。
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 ">
+                <div class="single-feature mb-30">
+                    <div class="title d-flex flex-row pb-20">
+                        <span class="lnr lnr-license"></span>
+                        <h4><a href="#">宽窄巷子</a></h4>
+                    </div>
+                    <p>
+                        宽窄巷子位于四川省成都市青羊区长顺街附近，由宽巷子、窄巷子、井巷子平行排列组成，全为青黛砖瓦的仿古四合院落，这里也是成都遗留下来的较成规模的清朝古街道，与大慈寺、文殊院一起并称为成都三大历史文化名城保护街区。
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 ">
+                <div class="single-feature mb-30">
+                    <div class="title d-flex flex-row pb-20">
+                        <span class="lnr lnr-phone"></span>
+                        <h4><a href="#">西岭雪山</a></h4>
+                    </div>
+                    <p>
+                        西岭雪山，位于四川省成都市大邑县境内，距成都仅95公里，总面积375平方公里，属世界自然遗产、大熊猫栖息地、国家AAAA级旅游景区、国家重点风景名胜区，因唐代大诗人杜甫的千古绝句"窗含西岭千秋雪，门泊东吴万里船"而得名。景区内有终年积雪的大雪山，海拔5353米，为成都第一峰
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 ">
+                <div class="single-feature">
+                    <div class="title d-flex flex-row pb-20">
+                        <span class="lnr lnr-rocket"></span>
+                        <h4><a href="#">国色天香</a></h4>
+                    </div>
+                    <p>
+                        置信国色天乡乐园，由成都置信实业(集团)有限公司开发，投资20亿人民币，位于成都市温江区万春镇，属国家级重点生态示范区，国家4A级景区，项目集上千亩主题公园、五星级酒店、会议中心、高尚国际主题社区、自然生态绿地于一体，并辅以欧洲风情商业中心、国际双语学校、幼儿园、大型医院等完善的配套设施，旨在打造一座旷世的"国色天乡国际度假区"。
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 ">
+                <div class="single-feature">
+                    <div class="title d-flex flex-row pb-20">
+                        <span class="lnr lnr-diamond"></span>
+                        <h4><a href="#">峨眉山</a></h4>
+                    </div>
+                    <p>
+                        峨眉山(Mount Emei)位于北纬30°附近，四川省西南部，四川盆地的西南边缘
+                        ，是中国"四大佛教名山"之一，地势陡峭，风景秀丽，素有"峨眉天下秀"之称，山上的万佛顶最高，海拔3099米，高出峨眉平原2700多米。《峨眉郡志》云:"云鬘凝翠，鬒黛遥妆，真如螓首蛾眉，细而长，美而艳也，故名峨眉山。"
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 ">
+                <div class="single-feature">
+                    <div class="title d-flex flex-row pb-20">
+                        <span class="lnr lnr-bubble"></span>
+                        <h4><a href="#">黄龙</a></h4>
+                    </div>
+                    <p>
+                        黄龙风景名胜区因沟中有许多彩池，随着周围景色变化和阳光照射角度变化变幻出五彩的颜色，被誉为"人间瑶池"。由黄龙沟、丹云峡、牟尼沟、雪宝鼎、雪山梁、红星岩，西沟等景区组成，主景区黄龙沟位于岷山主峰雪宝顶下，面临涪江源流，长7.5千米，宽1.5千米。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <center>
+            <a href="/sceneries" class="text-uppercase header-btn" style="color: #5d99b3;">
+                更多热门景点
+            </a>
+        </center>
+    </div>
+</section>
+<!-- End feature Area -->
+<!-- Start gallery Area -->
+<section class="gallery-area" id="gallery">
+    <div class="container-fluid">
+        <div class="row no-padding">
+            <div class="active-gallery">
+                <div class="item">
+                    <img th:src="${'/img/TCS.jpg'}" alt="" class="L_center_img">
+                </div>
+                <div class="item ">
+                    <img th:src="${'/img/KZXZ.jpg'}" alt="" class="L_center_img">
+                </div>
+                <div class="item ">
+                    <img th:src="${'/img/XLXS.jpg'}" alt="" class="L_center_img">
+                </div>
+                <div class="item ">
+                    <img th:src="${'/img/GSTX.jpg'}" alt="" class="L_center_img">
+                </div>
+                <div class="item ">
+                    <img th:src="${'/img/EMS.jpg'}" alt="" class="L_center_img">
+                </div>
+                <div class="item ">
+                    <img th:src="${'/img/HL.jpg'}" alt="" class="L_center_img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End gallery Area -->
 
-			<script src="js/vendor/jquery-2.2.4.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-			<script src="js/vendor/bootstrap.min.js"></script>
-			<script src="js/jquery.ajaxchimp.min.js"></script>
-			<script src="js/jquery.magnific-popup.min.js"></script>	
-			<script src="js/owl.carousel.min.js"></script>			
-			<script src="js/jquery.sticky.js"></script>
-			<script src="js/slick.js"></script>
-			<script src="js/jquery.counterup.min.js"></script>
-			<script src="js/waypoints.min.js"></script>		
-			<script src="js/main.js"></script>	
-		</body>
-	</html>
+<!-- End faq Area -->
+
+
+<!-- Start Video Area -->
+<section class="video-area pt-40 pb-40">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="video-content">
+            <a href="" class="play-btn"><img th:src="${'/img/play-btn.png'}" alt=""></a>
+            <div class="video-desc">
+                <h3 class="h2 text-white text-uppercase">Being unique is the preference</h3>
+                <h4 class="text-white">Youtube video will appear in popover</h4>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Start Video Area -->
+
+
+<!-- Start logo Area -->
+<section class="logo-area">
+    <div class="container">
+        <div class="row">
+
+        </div>
+    </div>
+</section>
+<!-- End logo Area -->
+
+
+<!-- start contact Area -->
+<section class="contact-area section-gap" id="contact">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">如果您想私人定制，欢迎联系我们</h1>
+                    <p>来一场说走就走的旅行.</p>
+                </div>
+            </div>
+        </div>
+        <form id="myForm" action="mail.php" method="post" class="contact-form text-right">
+            <div class="row">
+                <div class="col-lg-6 form-group">
+                    <input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''"
+                           onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control"
+                           required="" type="text">
+
+                    <input name="email" placeholder="Enter email address"
+                           pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
+                           onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control"
+                           required="" type="email">
+
+                    <input name="subject" placeholder="Enter your subject" onfocus="this.placeholder = ''"
+                           onblur="this.placeholder = 'Enter your subject'" class="common-input mb-20 form-control"
+                           required="" type="text">
+                </div>
+                <div class="col-lg-6 form-group">
+                    <textarea class="common-textarea mt-10 form-control" name="message" placeholder="Messege"
+                              onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required></textarea>
+                    <button class="primary-btn mt-20">Send Message<span class="lnr lnr-arrow-right"></span></button>
+                    <div class="alert-msg">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</section>
+<!-- end contact Area -->
+
+<!-- start footer Area -->
+<footer class="footer-area section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6>About Us</h6>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore dolore magna aliqua.
+                    </p>
+
+                    <p class="footer-text">Copyright &copy; 2020.Company name All rights reserved.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-5  col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6>Newsletter</h6>
+                    <p>Stay update with our latest</p>
+                    <div class="" id="mc_embed_signup">
+
+                        <form target="_blank" novalidate
+                              action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                              method="get" class="form-inline">
+
+                            <div class="d-flex flex-row">
+
+                                <input class="form-control" name="EMAIL" placeholder="Enter Email"
+                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+                                       required="" type="email">
+
+
+                                <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right"
+                                                                             aria-hidden="true"></i></button>
+                                <div style="position: absolute; left: -5000px;">
+                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
+                                           type="text">
+                                </div>
+
+                                <!-- <div class="col-lg-4 col-md-4">
+                                    <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
+                                </div>  -->
+                            </div>
+                            <div class="info"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+                <div class="single-footer-widget">
+                    <h6>Follow Us</h6>
+                    <p>Let us be social</p>
+                    <div class="footer-social d-flex align-items-center">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End footer Area -->
+
+<script th:src="${'/js/vendor/jquery-2.2.4.min.js'}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js}"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+<script th:src="${'/js/vendor/bootstrap.min.js'}"></script>
+<script th:src="${'/js/jquery.ajaxchimp.min.js'}"></script>
+<script th:src="${'/js/jquery.magnific-popup.min.js'}"></script>
+<script th:src="${'/js/owl.carousel.min.js'}"></script>
+<script th:src="${'/js/jquery.sticky.js'}"></script>
+<script th:src="${'/js/slick.js'}"></script>
+<script th:src="${'/js/jquery.counterup.min.js'}"></script>
+<script th:src="${'/js/waypoints.min.js'}"></script>
+<script th:src="${'/js/main.js'}"></script>
+</body>
+</html>

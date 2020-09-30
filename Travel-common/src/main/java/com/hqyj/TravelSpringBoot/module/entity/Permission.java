@@ -13,10 +13,26 @@ import java.io.Serializable;
  */
 @Data
 @Entity
-@Table(name="permission")
+@Table(name = "permission")
 public class Permission implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int permissionId;
     private String permissionName;
+
+    public int getPermissionId() {
+        return permissionId;
+    }
+
+    public void setPermissionId(int permissionId) {
+        this.permissionId = permissionId;
+    }
+
+    public String getPermissionName() {
+        return permissionName;
+    }
+
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName;
+    }
 }

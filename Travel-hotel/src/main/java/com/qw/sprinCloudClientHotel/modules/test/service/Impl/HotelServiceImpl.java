@@ -47,7 +47,7 @@ public class HotelServiceImpl implements HotelService {
     public Result<Hotel> insertHotel(Hotel hotel) {
         //判断数据库是否有这个酒店
         Hotel hotel1 = hotelDao.getHotelByHotelName(hotel.getHotelName());
-        if (hotel1 != null){
+        if (hotel1 != null) {
             return new Result<Hotel>(Result.ResultState.ERROR_RESPONSE,
                     "Hotel name is repeat");
         }
@@ -55,14 +55,14 @@ public class HotelServiceImpl implements HotelService {
         hotelDao.insertHotel(hotel);
 
         return new Result<Hotel>(Result.ResultState.SUCCESS_RESPONSE,
-                "Insert success.",hotel);
+                "Insert success.", hotel);
     }
 
     //模糊查询 分页
     @Override
     public PageInfo<Hotel> getHotelsBySearchVo(Serachvo serachvo) {
         serachvo.initSearchVo();
-        PageHelper.startPage(serachvo.getCurrentPage(),serachvo.getPageSize());
+        PageHelper.startPage(serachvo.getCurrentPage(), serachvo.getPageSize());
         return new PageInfo<Hotel>(
                 Optional.ofNullable(hotelDao.getHotelsBySearchVo(serachvo))
                         .orElse(Collections.emptyList()));
@@ -73,7 +73,7 @@ public class HotelServiceImpl implements HotelService {
     public Result<Hotel> updateHotel(Hotel hotel) {
         //判断数据库是否有这个酒店名字
         Hotel hotel1 = hotelDao.getHotelByHotelName(hotel.getHotelName());
-        if (hotel1 != null){
+        if (hotel1 != null) {
             return new Result<Hotel>(Result.ResultState.ERROR_RESPONSE,
                     "Hotel name is repeat");
         }
@@ -82,14 +82,14 @@ public class HotelServiceImpl implements HotelService {
         hotelDao.updateHotel(hotel);
 
         return new Result<Hotel>(Result.ResultState.SUCCESS_RESPONSE,
-                "Update hotel success.",hotel);
+                "Update hotel success.", hotel);
     }
 
     //删除
     @Override
     public Result<Object> deleteHotel(int hotelId) {
         hotelDao.deleteHotel(hotelId);
-        return new Result<>(Result.ResultState.SUCCESS_RESPONSE,
+        return new Result<Object>(Result.ResultState.SUCCESS_RESPONSE,
                 "Delete hotel success.");
     }
 

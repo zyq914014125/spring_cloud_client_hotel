@@ -1,0 +1,176 @@
+<html lang="zxx" class="no-js" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" th:href="${'/img/fav.png'}">
+    <!-- Author Meta -->
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Home</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" th:href="${'/css/linearicons.css'}">
+    <link rel="stylesheet" th:href="${'/css/font-awesome.min.css'}">
+    <link rel="stylesheet" th:href="${'/css/bootstrap.css'}">
+    <link rel="stylesheet" th:href="${'/css/magnific-popup.css'}">
+    <link rel="stylesheet" th:href="${'/css/animate.min.css'}">
+    <link rel="stylesheet" th:href="${'/css/owl.carousel.css'}">
+    <link rel="stylesheet" th:href="${'/css/main.css'}">
+    <link th:href="${'/css/style.css'}" rel="stylesheet" type="text/css"/>
+    <link th:href="${'/css/common.css'}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .L_center_img {
+            min-width: 35%;
+            vertical-align: middle;
+            border-radius: 3px;
+            height: 180px;
+            vertical-align: middle;
+        }</style>
+</head>
+<body>
+<section class="banner-area" id="home">
+    <!-- Start Header Area -->
+    <header class="default-header">
+        <nav class="navbar navbar-expand-lg  navbar-light" style="background-color: #000000;">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="text-white lnr lnr-menu"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end align-items-center"
+                     id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li><a href="/travel">首页</a></li>
+                        <li><a href="/routes">热推路线</a></li>
+                        <li><a href="#secvice">私人定制</a></li>
+                        <li><a href="#gallery">联系我们</a></li>
+                        <!-- Dropdown -->
+                        <li class="dropdown" shiro:notAuthenticated>
+                            <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                想要登陆吗？
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/login">登录</a>
+                                <a class="dropdown-item" href="/register">注册</a>
+                            </div>
+                        </li>
+                        <li class="dropdown" shiro:authenticated="true">
+                            <a class="dropdown-toggle" href="#" id="login" data-toggle="dropdown">
+                                已登录
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/loginout">注销</a>
+                                <a class="dropdown-item" href="/loginout">个人中心</a>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End Header Area -->
+</section>
+<img th:src="@{/img/logo.png}" style="width: 150px;height: 150px;float: left;">
+<section class="section-gap info-area" id="about">
+    <div class="container">
+        <div class="clumn_r01">
+            <div class="js_box">
+                <div class="js_tit clearfix">
+                    <div class="xs_w">显示方式：<a class="tw_a" href="#">图文</a></div>
+                    <form id="pageForm" name="pageForm" action="/routes" method="post">
+                        <input type="hidden" id="currentPage" name="currentPage" th:value="${map.pageNum}"/>
+                        <input type="hidden" id="pageSize" name="pageSize" th:value="${map.pageSize}"/>
+                        <input type="hidden" id="endpagecount" th:value="${map.pages}">
+                        <div class="fy_w"><a th:text="${map.pageNum}+'/'+${map.pages}+'页'"> </a>
+                            <a class="previousPage" id="up" href="javascript:void(0)">上一页</a>
+                            <a class="toPageOne" id="first" href="javascript:void(0)">首页</a>
+                            <a class="nextPage" id="next" href="javascript:void(0)">下一页</a>
+                            <a class="toPageLast" id="end" href="javascript:void(0)">尾页</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="js_wrap claerdix">
+                    <div class="js_con clearfix" th:each="sc:${map.list}">
+                        <div class="js_l"><a href="#">
+                            <img th:src="@{/img/logo.png}" style="    height: 75px;"/></a></div>
+                        <div class="js_c">
+                            <p><b><a th:href="@{'/routes/'+${sc.routeId}}" th:text="${sc.routeName}"></a></b></p>
+                            <p text="出团日期：12-14至2-08"></p>
+                        </div>
+                        <div class="js_r">
+                            <p><span class="fn_o">￥</span><b th:text="${sc.totalPrice}"></b>起</p>
+                            <p>
+                                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
+                                        shiro:notAuthenticated><a href="/login">请登录参团</a></button>
+                            </p>
+                            <p>
+                                <button class="btn btn-primary btn-lg" shiro:authenticated="true" style="color: #4cd3e3"
+                                        name="purch">
+                                    <a th:href="@{'/routes/'+${sc.routeId}}">参团</a></button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+<script th:src="${'/js/vendor/jquery-2.2.4.min.js'}"></script>
+<script th:src="${'/js/vendor/bootstrap.min.js'}"></script>
+<script th:src="${'/js/jquery.ajaxchimp.min.js'}"></script>
+<script th:src="${'/js/jquery.magnific-popup.min.js'}"></script>
+<script th:src="${'/js/owl.carousel.min.js'}"></script>
+<script th:src="${'/js/jquery.sticky.js'}"></script>
+<script th:src="${'/js/slick.js'}"></script>
+<script th:src="${'/js/jquery.counterup.min.js'}"></script>
+<script th:src="${'/js/waypoints.min.js'}"></script>
+<script th:src="${'/js/main.js'}"></script>
+<script>
+
+		$("#up").click(function(){
+			page=$("#currentPage").val()-1
+			if(page==0){ return }
+			else
+			$("#currentPage").val(page)
+			$("#pageForm").submit()
+		})
+			$("#first").click(function(){
+			$("#currentPage").val(1)
+			$("#pageForm").submit()
+		})
+			$("#next").click(function(){
+			page=$("#currentPage").val()+1
+			end=$("#endpagecount").val()
+			if(page==end){ return }
+			else
+			$("#currentPage").val(page)
+			$("#pageForm").submit()
+		})
+		$("#first").click(function(){
+		    end=$("#endpagecount").val()
+			$("#currentPage").val(end)
+			$("#pageForm").submit()
+		})
+
+</script>
+</html>

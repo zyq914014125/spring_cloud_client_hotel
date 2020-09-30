@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Data
 @Entity
-@Table(name="tourguid")
+@Table(name = "tourguid")
 public class Tourguid implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +29,67 @@ public class Tourguid implements Serializable {
     @Transient
     private List<Route> routeId;
 
+    public int getTourguidId() {
+        return tourguidId;
+    }
+
+    public void setTourguidId(int tourguidId) {
+        this.tourguidId = tourguidId;
+    }
+
+    public String getTourguidName() {
+        return tourguidName;
+    }
+
+    public void setTourguidName(String tourguidName) {
+        this.tourguidName = tourguidName;
+    }
+
+    public String getTourguidSex() {
+        return tourguidSex;
+    }
+
+    public void setTourguidSex(String tourguidSex) {
+        this.tourguidSex = tourguidSex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getTourguidTel() {
+        return tourguidTel;
+    }
+
+    public void setTourguidTel(String tourguidTel) {
+        this.tourguidTel = tourguidTel;
+    }
+
+    public int getTourguidState() {
+        return tourguidState;
+    }
+
+    public void setTourguidState(int tourguidState) {
+        this.tourguidState = tourguidState;
+    }
+
+    public String getTourguidDescribe() {
+        return tourguidDescribe;
+    }
+
+    public void setTourguidDescribe(String tourguidDescribe) {
+        this.tourguidDescribe = tourguidDescribe;
+    }
+
+    public List<Route> getRouteId() {
+        return routeId;
+    }
+
+    public void setRouteId(List<Route> routeId) {
+        this.routeId = routeId;
+    }
 }

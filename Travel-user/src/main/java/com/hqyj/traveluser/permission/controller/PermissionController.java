@@ -33,29 +33,28 @@ public class PermissionController {
     }
 
     /**
-     *127.0.0.1:8150/api/perms---post
+     * 127.0.0.1:8150/api/perms---post
      * {"permissionName":"管理员"}
      */
-    @PostMapping(value = "/perms",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Result<Permission> addPerm(@RequestBody Permission permission){
+    @PostMapping(value = "/perms", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Result<Permission> addPerm(@RequestBody Permission permission) {
         return permissionService.addPerm(permission);
     }
 
     /**
-     *127.0.0.1:8150/api/perms----put
+     * 127.0.0.1:8150/api/perms----put
      * {"permissionName":"经理","permissionId":4}
      */
-    @PutMapping(value = "/perms",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Result<Permission> updatePerm(@RequestBody Permission permission){
+    @PutMapping(value = "/perms", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Result<Permission> updatePerm(@RequestBody Permission permission) {
         return permissionService.updatePerm(permission);
     }
 
     /**
-     *127.0.0.1:8150/api/perms/6----delete
-     *
+     * 127.0.0.1:8150/api/perms/6----delete
      */
     @DeleteMapping(value = "/perms/{permissionId}")
-    public Result<Object> deletePerm(@PathVariable int permissionId){
+    public Result<Object> deletePerm(@PathVariable int permissionId) {
         return permissionService.deletePerm(permissionId);
     }
 

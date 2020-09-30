@@ -36,23 +36,23 @@ public class carServiceImpl implements carService {
     @Transactional
     public Result<Car> delCar(int carId) {
         carDao.delCar(carId);
-        return new Result<Car>(Result.ResultState.SUCCESS_RESPONSE,"delete success");
+        return new Result<Car>(Result.ResultState.SUCCESS_RESPONSE, "delete success");
     }
 
     @Override
     public Result<Car> updateCar(Car car) {
         Car cars = carDao.selectCarByCarId(car.getCarId());
-        if (cars!=null){
+        if (cars != null) {
             carDao.updateCar(car);
-            return new Result<Car>(Result.ResultState.SUCCESS_RESPONSE,"update success");
-        }else {
-            return new Result<Car>(Result.ResultState.ERROR_RESPONSE,"null!");
+            return new Result<Car>(Result.ResultState.SUCCESS_RESPONSE, "update success");
+        } else {
+            return new Result<Car>(Result.ResultState.ERROR_RESPONSE, "null!");
         }
     }
 
     @Override
     public List<Car> selectCarByState() {
-       return Optional
+        return Optional
                 .ofNullable(carDao.selectCarByState())
                 .orElse(Collections.emptyList());
     }

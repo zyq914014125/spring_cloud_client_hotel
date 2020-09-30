@@ -19,7 +19,7 @@ import java.util.List;
 @Mapper
 public interface HotelDao {
     //通过id查询景点
-    @Select("select * from hotel where id = #{sceneryId}")
+    @Select("select * from hotel where scenery_id = #{sceneryId}")
     List<Hotel> getHotelsBySceneryId(int sceneryId);
 
     //查询所有酒店
@@ -32,7 +32,7 @@ public interface HotelDao {
 
     //新增
     @Insert("insert into hotel (hotel_name) values(#{hotelName})")
-    @Options(useGeneratedKeys = true,keyColumn = "hotel_id",keyProperty = "hotelId")
+    @Options(useGeneratedKeys = true, keyColumn = "hotel_id", keyProperty = "hotelId")
     void insertHotel(Hotel hotel);
 
     //模糊查询

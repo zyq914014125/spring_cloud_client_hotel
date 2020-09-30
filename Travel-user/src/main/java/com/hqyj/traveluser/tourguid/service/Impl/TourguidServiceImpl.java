@@ -33,7 +33,7 @@ public class TourguidServiceImpl implements TourguidService {
             return new Result<Tourguid>(Result.ResultState.ERROR_RESPONSE, "tourguidName is repeate!");
         }
         tourguidMapper.insertTour(tourguid);
-        return new Result<Tourguid>(Result.ResultState.SUCCESS_RESPONSE, "Insert success!",tourguid);
+        return new Result<Tourguid>(Result.ResultState.SUCCESS_RESPONSE, "Insert success!", tourguid);
     }
 
     @Override

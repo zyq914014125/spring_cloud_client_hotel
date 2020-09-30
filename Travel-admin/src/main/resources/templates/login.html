@@ -1,0 +1,62 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <meta name="robots" content="none" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+    <meta name="generator" content="Z-BlogPHP 1.5.1 Zero" />
+    <meta name="renderer" content="webkit" />
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/stylelogin.css}" />
+    <style>
+        body{background: url(img/HL.jpg) no-repeat center;background-size: cover;}
+        .loginbg{background-image: url(img/HL.jpg)}
+        @media (max-width: 500px){
+            body {background: #fff;}
+            .login{box-shadow: initial;}
+            .head {background: url('img/HL.jpg') no-repeat center;background-size: cover;}}
+        .bing{display:none}
+    </style>
+</head>
+<script type="text/javascript" th:src="@{js/jquery.js}"></script>
+
+<script>
+$(function() {
+    $("body").keydown(function() {
+        if (event.keyCode == "13") {
+            $('.submit').click();
+        }
+    });
+    var loginh = $('.login').outerHeight() / 2 + 20;
+    var loginw = $('.login').outerWidth() / 2;
+    $('.login').css('margin-top','-'+loginh+'px');
+    $('.login').css('margin-left','-'+loginw+'px');
+});
+</script>
+<body>
+<div class="login">
+    <div class="loginbg"></div>
+    <div class="head">
+        <span class="name">简爱旅游</span>
+        <span class="title">登录</span>
+    </div>
+    <form action="/api/login" method="post">
+    <div class="loginbox">
+        <input type="text" id="edtUserName" name="userName" class="text" placeholder="账号">
+        <hr class="hr15">
+        <input type="password" id="edtPassWord" name="userPwd" class="text" placeholder="密码">
+        <hr class="hr15">
+        <input required="required" type="text" name="verifycode" style="width:65%" placeholder="验证码"><span class="fr" style="line-height: 45px;"><img id="reg_verfiycode" style="border:none;vertical-align:middle;width:90px;height:30px;cursor:pointer;" src="https://www.pengqi.club/zb_system/script/c_validcode.php?id=User" alt="" title="" onClick="javascript:this.src='https://www.pengqi.club/zb_system/script/c_validcode.php?id=User&amp;tm='+Math.random();" /></span> <hr class="hr15">
+        <span class="fl"><label for="chkRemember"><input type="checkbox" id="chkRemember" name="chkRemember"> 保持登录</label></span>
+        <span class="fr"><a href="forget.html">忘记密码？</a> <a href="/register">注册账号</a></span>
+        <hr class="hr15">
+        <input type="submit" id="loginbtnPost" name="loginbtnPost" class="submit" onClick="return Ytuser_Login()" value="登录">
+        <hr class="hr15">
+    </div>
+    </form>
+    <div class="back"><a href="/travel">返回首页</a></div>
+</div>
+</body>
+</html>

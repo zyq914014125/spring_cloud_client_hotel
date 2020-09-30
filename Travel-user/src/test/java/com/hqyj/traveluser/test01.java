@@ -2,27 +2,26 @@ package com.hqyj.traveluser;
 
 import java.util.Scanner;
 
-public class test01{
-    public static void main(String[] args){
-        int[] A={1,3,5,7};
-        int ans=BinarySearch(A,5);
+public class test01 {
+    public static void main(String[] args) {
+        int[] A = {1, 3, 5, 7};
+        int ans = BinarySearch(A, 5);
         System.out.println(ans);
 
     }
-    public static int BinarySearch(int[] A,int x){
-        int left=0;
-        int right=A.length-1;
+
+    public static int BinarySearch(int[] A, int x) {
+        int left = 0;
+        int right = A.length - 1;
         int middle;
-        while (left<=right){
-            middle=(left+right)/2;
-            if(x==A[middle]){
+        while (left <= right) {
+            middle = (left + right) / 2;
+            if (x == A[middle]) {
                 return middle;
-            }
-            else if(x<A[middle]){
-                right=middle-1;
-            }
-            else{
-                left=middle+1;
+            } else if (x < A[middle]) {
+                right = middle - 1;
+            } else {
+                left = middle + 1;
             }
         }
         return -1;

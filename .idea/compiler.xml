@@ -7,32 +7,32 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring_cloud_client_hotel" />
         <module name="Travel-user" />
-        <module name="spring_cloud_client (1)" />
+        <module name="Scenery" />
         <module name="Travel-register" />
-        <module name="Travel-common" />
+        <module name="spring_cloud_client (1)" />
+        <module name="travel-register" />
         <module name="Travel-admin" />
-        <module name="client" />
+        <module name="Hotel" />
+        <module name="admin." />
+        <module name="Car" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring_cloud_client" target="1.8" />
-      <module name="Travel-service" target="1.8" />
-      <module name="Travel-User" target="1.8" />
+      <module name="gateway" target="1.8" />
+      <module name="MyTravel" target="8" />
+      <module name="Travel-common" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Travel-User" options="-parameters" />
-      <module name="Travel-admin" options="-parameters" />
-      <module name="Travel-register" options="-parameters" />
-      <module name="Travel-service" options="-parameters" />
+      <module name="Car" options="-parameters" />
+      <module name="Hotel" options="-parameters" />
+      <module name="Scenery" options="-parameters" />
       <module name="Travel-user" options="-parameters" />
-      <module name="client" options="-parameters" />
-      <module name="spring_cloud_client" options="-parameters" />
-      <module name="spring_cloud_client (1)" options="-parameters" />
-      <module name="spring_cloud_client_hotel" options="-parameters" />
+      <module name="admin." options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="travel-register" options="-parameters" />
     </option>
   </component>
 </project>

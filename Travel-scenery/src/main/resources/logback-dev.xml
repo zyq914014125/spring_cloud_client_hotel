@@ -14,27 +14,27 @@
 		%msg：表示应用程序提供需要打印的日志信息；
 		%n：表示换行符；
  -->
-<configuration 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://www.padual.com/java/logback.xsd"
-    debug="false" scan="true" scanPeriod="30 seconds">
-    
+<configuration
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://www.padual.com/java/logback.xsd"
+        debug="false" scan="true" scanPeriod="30 seconds">
+
     <!-- 定义常量 -->
-    <property name="env" value="dev" />
-    <property name="project" value="java_spring_boot" />
-    <property name="root" value="/log" />
-    <property name="fileSize" value="50MB" />
-    <property name="maxHistory" value="100" />
-    <timestamp key="dateTime" datePattern="yyyy-MM-dd HH:mm:ss" />
-    <property name="pattern" value="%d{${dateTime}} %-5level %logger{36} -- %msg%n" />
-    
+    <property name="env" value="dev"/>
+    <property name="project" value="java_spring_boot"/>
+    <property name="root" value="/log"/>
+    <property name="fileSize" value="50MB"/>
+    <property name="maxHistory" value="100"/>
+    <timestamp key="dateTime" datePattern="yyyy-MM-dd HH:mm:ss"/>
+    <property name="pattern" value="%d{${dateTime}} %-5level %logger{36} -- %msg%n"/>
+
     <!-- 控制台打印 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder charset="utf-8">
             <pattern>${pattern}</pattern>
         </encoder>
     </appender>
-    
+
     <!-- 输入到文件，按日期和文件大小 -->
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder charset="utf-8">
@@ -44,28 +44,28 @@
             <fileNamePattern>${root}/${project}_${env}_%d.%i.log</fileNamePattern>
             <maxHistory>${maxHistory}</maxHistory>
             <timeBasedFileNamingAndTriggeringPolicy
-                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>${fileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
     </appender>
-    
+
     <!-- 指定jar包输出日志级别，additivity: false，不会打印两次 -->
     <Logger name="org.springframework" level="DEBUG" additivity="false">
-    	<appender-ref ref="console"/>
-    	<appender-ref ref="file"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
     </Logger>
-    <logger name="org.hibernate" level="DEBUG" additivity="false" >
-	    <appender-ref ref="console" />
-		<appender-ref ref="file" />
-	</logger>
-    
+    <logger name="org.hibernate" level="DEBUG" additivity="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </logger>
+
     <!-- Logger 根目录 
     	level: TRACE<DEBUG<INFO<WARN<ERROR
     	我们在 appender file 的时候，并没有指定日志级别，在此由 root 来控制，输出指定级别及之上级别的日志
     -->
     <root level="DEBUG">
-        <appender-ref ref="console" />
-        <appender-ref ref="file" />  
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
     </root>
 </configuration>
