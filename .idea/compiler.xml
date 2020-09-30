@@ -7,15 +7,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Travel-user" />
+        <module name="Hotel" />
         <module name="Scenery" />
         <module name="Travel-register" />
         <module name="spring_cloud_client (1)" />
-        <module name="travel-register" />
-        <module name="Travel-admin" />
-        <module name="Hotel" />
-        <module name="admin." />
         <module name="Car" />
+        <module name="travel-register" />
+        <module name="admin." />
+        <module name="Travel-admin" />
+        <module name="Travel-user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
